@@ -1,38 +1,25 @@
 #include<stdio.h>
-void quicksort(int number[25],int first,int last){
-    int i, j, pivot, temp;
-    if(first<last){
-        pivot=first;
-        i=first;
-        j=last;
-        for (int i=0;i<j;i++){
-            while(number[i]<=number[pivot]&&i<last)
-            i++;
-            while(number[j]>number[pivot])
-            j--;
-            if(i<j){
-                temp=number[i];
-                number[i]=number[j];
-                number[j]=temp;
+int main ()
+{
+    int n ,temp , i;
+    int arr[]={1,5,2,45,4,34,0};
+    n=sizeof(arr)/sizeof(arr[0]);
+    for(i=0;i<n-1;i++)
+    {
+        int min =i;
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[j]<arr[min])
+            {
+                min=j;
             }
         }
-        temp=number[pivot];
-        number[pivot]=number[j];
-        number[j]=temp;
-        quicksort(number,first,j-1);
-        quicksort(number,j+1,last);
+            temp=arr[i];
+            arr[i]=arr[min];
+            arr[min]=temp;
     }
-}
-int main(){
-    int i, count, number[25];
-    printf("How many elements will you enter: ");
-    scanf("%d",&count);
-    printf("Enter %d elements: ", count);
-    for(i=0;i<count;i++)
-    scanf("%d",&number[i]);
-    quicksort(number,0,count-1);
-    printf("Order of Sorted elements: ");
-    for(i=0;i<count;i++)
-    printf(" %d",number[i]);
-    return 0;
+    printf("\nSorted array: ");
+        for (int i = 0; i < n; i++) {
+            printf("%d ", arr[i]);
+        }
 }
