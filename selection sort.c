@@ -1,4 +1,10 @@
 #include<stdio.h>
+int swap(int *a , int *b){
+    int t=*a;
+    *a=*b;
+    *b=t;
+}
+
 int main ()
 {
     int n ,temp , i;
@@ -14,9 +20,7 @@ int main ()
                 min=j;
             }
         }
-            temp=arr[i];
-            arr[i]=arr[min];
-            arr[min]=temp;
+            swap(&arr[i],&arr[min]);
     }
     printf("\nSorted array: ");
         for (int i = 0; i < n; i++) {
