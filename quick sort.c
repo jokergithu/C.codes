@@ -5,14 +5,14 @@ int swap(int *a , int *b)
     *a = *b;
     *b = t;
 }
-void quicksort(int arr[25],int first,int last){
+void quicksort(int arr[25],int low,int high){
    int i, j, pivot, temp;
-   if(first<last){
-      pivot=first;
-      i=first;
-      j=last;
+   if(low<high){
+      pivot=low;
+      i=low;
+      j=high;
       while(i<j){
-         while(arr[i]<=arr[pivot]&&i<last)
+         while(arr[i]<=arr[pivot]&&i<high)
          i++;
          while(arr[j]>arr[pivot])
          j--;
@@ -21,8 +21,8 @@ void quicksort(int arr[25],int first,int last){
          }
       }
       swap(&arr[pivot],&arr[j]);
-      quicksort(arr,first,j-1);
-      quicksort(arr,j+1,last);
+      quicksort(arr,low,j-1);
+      quicksort(arr,j+1,high);
    }
 }
 int main(){
